@@ -3,7 +3,7 @@ package tabuleiro;
 public class Tabuleiro {
     private final int LINHA = 10;
     private final int COLUNA = 10;
-    private String[][] tabuleiro = new String[LINHA][COLUNA];
+    private String[][] grade;
     private final String CERTEIRO = "*";
     private final String AGUA = "-";
     private final String CERTEIRO_NAVIO = "X";
@@ -17,27 +17,33 @@ public class Tabuleiro {
     public final String vetor[] = {"| A |", "| B |", "| C |", "| D |", "| E |", "| F |", "| G |", "| H |", "| I |", "| J |"};
 
     public Tabuleiro() {
+        grade = new String[10][10];
         preencheTabuleiro();
     }
 
     public void imprimeTabuleiro() {
         System.out.println(cabecalho);
-        for (int linha = 0; linha < tabuleiro.length; linha++) {
+        for (int linha = 0; linha < grade.length; linha++) {
             System.out.print(vetor[linha]);
-            for (int colunha = 0; colunha < tabuleiro[linha].length; colunha++) {
-                System.out.print(tabuleiro[linha][colunha]);
+            for (int colunha = 0; colunha < grade[linha].length; colunha++) {
+                System.out.print(grade[linha][colunha]);
             }
             System.out.println("\n---------------------------------------------");
         }
     }
 
     public void preencheTabuleiro() {
-        for (int linha = 0; linha < tabuleiro.length; linha++) {
-            for (int colunha = 0; colunha < tabuleiro[linha].length; colunha++) {
-                tabuleiro[linha][colunha] = "   |";
+        for (int linha = 0; linha < grade.length; linha++) {
+            for (int colunha = 0; colunha < grade[linha].length; colunha++) {
+                grade[linha][colunha] = "   |";
             }
         }
     }
+
+    public void setGrade(int linha, int coluna, String caractere) {
+        this.grade[linha][coluna] = caractere;
+    }
+
 }
 
 
