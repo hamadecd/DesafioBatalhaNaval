@@ -14,7 +14,7 @@ public class Tabuleiro {
             "---------------------------------------------\n" +
             "|   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |\n" +
             "---------------------------------------------";
-    public final String vetor[] = {"| A |", "| B |", "| C |", "| D |", "| E |", "| F |", "| G |", "| H |", "| I |", "| J |"};
+    public final String vetorColuna[] = {"| A |", "| B |", "| C |", "| D |", "| E |", "| F |", "| G |", "| H |", "| I |", "| J |"};
 
     public Tabuleiro() {
         grade = new String[10][10];
@@ -24,7 +24,7 @@ public class Tabuleiro {
     public void imprimeTabuleiro() {
         System.out.println(cabecalho);
         for (int linha = 0; linha < grade.length; linha++) {
-            System.out.print(vetor[linha]);
+            System.out.print(vetorColuna[linha]);
             for (int colunha = 0; colunha < grade[linha].length; colunha++) {
                 System.out.print(grade[linha][colunha]);
             }
@@ -42,6 +42,10 @@ public class Tabuleiro {
 
     public void setGrade(int linha, int coluna, String caractere) {
         this.grade[linha][coluna] = caractere;
+    }
+
+    public String[][] getGrade() {
+        return grade;
     }
 
 }

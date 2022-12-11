@@ -11,8 +11,5 @@ public class Jogo {
 
         Partida partida = new Partida();
 
-        partida.iniciaTabuleiro();
-        partida.definePosicoes();
-        partida.iniciaTabuleiro();
     }
 }
