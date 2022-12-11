@@ -12,10 +12,8 @@ public class Partida {
     public Jogador computador;
 
     public Partida() {
-//        this.pessoa = new Pessoa();
+        this.pessoa = new Pessoa();
         this.computador = new Computador();
-//        pessoa.setNome();
-//        computador.setNome();
     }
 
     public static int getNumero(String frase) {
@@ -29,8 +27,27 @@ public class Partida {
         }
     }
 
-    public void fazJogada() {
+    public void iniciaJogo() {
+        boolean selecionaJogador = true;
+        do {
+            if (selecionaJogador == true) {
+                computador.fazJogada(pessoa);
+                pessoa.imprimeTabuleiro(); // APAGAR ESSA LINHA
+                selecionaJogador = false;
+            } else {
+                pessoa.fazJogada(computador);
+                computador.imprimeTabuleiro();
+                selecionaJogador = true;
+            }
+        } while (pessoa.getQuantidadeAcertos() < 10 || computador.getQuantidadeAcertos() < 10);
 
+    }
+
+    public void verificaVencedor() {
+        if (pessoa.getQuantidadeAcertos() == 10 || computador.getQuantidadeAcertos() == 10) {
+            System.out.println("Jogo acabou!");
+            System.exit(0);
+        }
     }
 
 }

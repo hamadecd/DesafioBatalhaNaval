@@ -15,17 +15,11 @@ public class Jogador {
         tabuleiro = new Tabuleiro();
     }
 
-    public void posicionaPecas() {
+    public void posicionaPecas() {}
 
-    }
+    public void fazJogada(Jogador jogador) {}
 
-    public void fazJogada(Jogador jogador) {
-        int linha = getNumero("Informe a posição da linha: ");
-        int coluna = getNumero("Informe a posição da coluna: ");
-        jogador.tabuleiro.setGrade(linha, coluna, "");
-
-    }
-    public void setNome() {
+    protected void setNome() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Jogador, informe seu nome: ");
         this.nome = scanner.nextLine();
