@@ -1,5 +1,9 @@
 package tabuleiro;
 
+import jogador.Computador;
+import jogador.Jogador;
+import jogador.Pessoa;
+
 public class Tabuleiro {
 
     private String[][] grade;
@@ -7,6 +11,7 @@ public class Tabuleiro {
     private final String AGUA = " - ";
     private final String CERTEIRO_NAVIO = " X ";
     private final String AGUA_NAVIO = " n ";
+    private final String VAZIO = "   ";
     private final String NAVIO = " N ";
     private String cabecalho = "---------------------------------------------\n" +
             "                  JOGADOR                    \n" +
@@ -39,24 +44,17 @@ public class Tabuleiro {
         }
     }
 
-    public void gravaTabuleiro(int linha, int coluna) {
+    public int gravaTabuleiro(int linha, int coluna) {
         if (grade[linha][coluna].equals("   ")) {
             grade[linha][coluna] = AGUA;
         } else if (grade[linha][coluna].equals(NAVIO)) {
-            grade[linha][coluna] = CERTEIRO_NAVIO;
-        } else {
-
+            grade[linha][coluna] = CERTEIRO;
+            return 1;
+        } else if (!grade[linha][coluna].equals(VAZIO)) {
+            System.out.println("Posição já preenchida.");
+            return -1;
         }
-
-//        String alvo = grade[linha][coluna];
-//        switch (alvo) {
-//            case NAVIO :
-//                grade[linha][coluna] = CERTEIRO_NAVIO;
-//                break;
-//            case CERTEIRO:
-//                System.out.println();
-//                break;
-//        }
+        return 0;
     }
 
     public void setGrade(int linha, int coluna, String caractere) {

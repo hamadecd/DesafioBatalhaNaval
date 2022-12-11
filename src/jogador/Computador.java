@@ -12,9 +12,12 @@ public class Computador extends Jogador {
         Random random = new Random();
         int linha = random.nextInt(0, 10);
         int coluna = random.nextInt(0, 10);
-        pessoa.tabuleiro.gravaTabuleiro(linha, coluna);
-
-        setQuantidadeAcertos(1);
+        int ponto = pessoa.tabuleiro.gravaTabuleiro(linha, coluna);
+        if (ponto > 0) {
+            setQuantidadeAcertos(getQuantidadeAcertos()+1);
+        } else if (ponto == -1) {
+            fazJogada(pessoa);
+        }
     }
 
     public void posicionaPecas() {
@@ -29,7 +32,7 @@ public class Computador extends Jogador {
                 contador++;
             }
         }
-        // APAGAR ESSAS DUAD LINHAS ABAIXO
+        // APAGAR ESSAS DUAS LINHAS ABAIXO
         System.out.println("TABULEIRO DO COMPUTADOR");
         tabuleiro.imprimeTabuleiro();
     }

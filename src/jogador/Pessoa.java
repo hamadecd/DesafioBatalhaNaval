@@ -14,7 +14,12 @@ public class Pessoa extends Jogador {
     public void fazJogada(Jogador computador) {
         int linha = getNumero("Informe a posição da linha: ");
         int coluna = getNumero("Informe a posição da coluna: ");
-        computador.tabuleiro.gravaTabuleiro(linha, coluna);
+        int ponto = computador.tabuleiro.gravaTabuleiro(linha, coluna);
+        if (ponto > 0) {
+            setQuantidadeAcertos(getQuantidadeAcertos()+1);
+        } else if (ponto == -1) {
+            fazJogada(computador);
+        }
     }
 
     public void posicionaPecas() {

@@ -39,15 +39,19 @@ public class Partida {
                 computador.imprimeTabuleiro();
                 selecionaJogador = true;
             }
-        } while (pessoa.getQuantidadeAcertos() < 10 || computador.getQuantidadeAcertos() < 10);
-
+//            contadorPartidas++;
+//            if (contadorPartidas > )
+        } while (pessoa.getQuantidadeAcertos() < 1 && computador.getQuantidadeAcertos() < 1);
+        exibeVencedor();
     }
 
-    public void verificaVencedor() {
-        if (pessoa.getQuantidadeAcertos() == 10 || computador.getQuantidadeAcertos() == 10) {
-            System.out.println("Jogo acabou!");
-            System.exit(0);
+    public void exibeVencedor() {
+        if (pessoa.getQuantidadeAcertos() == 1) {
+            System.out.println("Jogo acabou! " + pessoa.getNome() + " venceu o jogo!");
+        } else {
+            System.out.println("Jogo acabou! Brainiac venceu o jogo!");
         }
+        System.exit(0);
     }
 
 }
