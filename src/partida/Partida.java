@@ -5,6 +5,7 @@ import jogador.Jogador;
 import jogador.Pessoa;
 import tabuleiro.Tabuleiro;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Partida {
@@ -14,15 +15,25 @@ public class Partida {
     public Partida() {
         this.pessoa = new Pessoa();
         this.computador = new Computador();
+        iniciaJogo();
     }
 
     public static int getNumero(String frase) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(frase);
+        int retorno;
         try {
-            return scanner.nextInt();
-        } catch (RuntimeException e) {
+            retorno = scanner.nextInt();
+            if (retorno >= 0 && retorno <= 9) {
+                return retorno;
+            } else {
+                throw new IllegalArgumentException("Informe um número de 0 a 9");
+            }
+        } catch (InputMismatchException e) {
             System.out.println("Número inválido!");
+            return getNumero(frase);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return getNumero(frase);
         }
     }
@@ -40,16 +51,15 @@ public class Partida {
                 selecionaJogador = true;
             }
 //            contadorPartidas++;
-//            if (contadorPartidas > )
-        } while (pessoa.getQuantidadeAcertos() < 1 && computador.getQuantidadeAcertos() < 1);
+        } while (pessoa.getQuantidadeAcertos() < 2 && computador.getQuantidadeAcertos() < 2);
         exibeVencedor();
     }
 
     public void exibeVencedor() {
-        if (pessoa.getQuantidadeAcertos() == 1) {
-            System.out.println("Jogo acabou! " + pessoa.getNome() + " venceu o jogo!");
+        if (pessoa.getQuantidadeAcertos() == 2) {
+            System.out.println("Jogo acabou! " + pessoa.getNome() + " venceu!");
         } else {
-            System.out.println("Jogo acabou! Brainiac venceu o jogo!");
+            System.out.println("Jogo acabou! Brainiac venceu!");
         }
         System.exit(0);
     }

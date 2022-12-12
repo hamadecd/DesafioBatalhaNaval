@@ -11,7 +11,5 @@ public class Jogo {
 
         Partida partida = new Partida();
 
-        partida.iniciaJogo();
-
     }
 }

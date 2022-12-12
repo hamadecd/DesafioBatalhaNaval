@@ -12,7 +12,7 @@ public class Computador extends Jogador {
         Random random = new Random();
         int linha = random.nextInt(0, 10);
         int coluna = random.nextInt(0, 10);
-        int ponto = pessoa.tabuleiro.gravaTabuleiro(linha, coluna);
+        int ponto = pessoa.tabuleiro.gravaTabuleiro(linha, coluna, getGradeJogador());
         if (ponto > 0) {
             setQuantidadeAcertos(getQuantidadeAcertos()+1);
         } else if (ponto == -1) {

@@ -15,6 +15,10 @@ public class Jogador {
         tabuleiro = new Tabuleiro();
     }
 
+    protected String[][] getGradeJogador() {
+        return tabuleiro.getGrade();
+    }
+
     public void posicionaPecas() {}
 
     public void fazJogada(Jogador jogador) {}
