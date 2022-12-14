@@ -10,9 +10,9 @@ public class Computador extends Jogador {
 
     public void fazJogada(Jogador pessoa) {
         Random random = new Random();
-        int linha = random.nextInt(0, 10);
+        int linha = random.nextInt(0, 1);
         int coluna = random.nextInt(0, 10);
-        int ponto = pessoa.tabuleiro.gravaTabuleiro(linha, coluna, getGradeJogador());
+        int ponto = tabuleiro.gravaTabuleiro(linha, coluna, pessoa.getGradeJogador());
         if (ponto > 0) {
             setQuantidadeAcertos(getQuantidadeAcertos()+1);
         } else if (ponto == -1) {
@@ -33,8 +33,8 @@ public class Computador extends Jogador {
             }
         }
         // APAGAR ESSAS DUAS LINHAS ABAIXO
-        System.out.println("TABULEIRO DO COMPUTADOR");
-        tabuleiro.imprimeTabuleiro();
+//        System.out.println("TABULEIRO DO COMPUTADOR");
+//        tabuleiro.imprimeTabuleiro();
     }
 
 }

@@ -4,6 +4,8 @@ import jogador.Computador;
 import jogador.Jogador;
 import jogador.Pessoa;
 
+import javax.print.attribute.standard.MediaSize;
+
 public class Tabuleiro {
 
     private String[][] grade;
@@ -45,22 +47,25 @@ public class Tabuleiro {
     }
 
     public int gravaTabuleiro(int linha, int coluna, String[][] gradeOponente) {
-        if (grade[linha][coluna].equals(VAZIO)) {
-            grade[linha][coluna] = AGUA;
-            if (gradeOponente[linha][coluna].equals(NAVIO)) {
-                gradeOponente[linha][coluna] = AGUA_NAVIO;
+
+        if (grade[linha][coluna].equals(NAVIO) || grade[linha][coluna].equals(VAZIO)) {
+            if (gradeOponente[linha][coluna].equals(VAZIO) || gradeOponente[linha][coluna].equals(CERTEIRO)) {
+                if (grade[linha][coluna].equals(NAVIO)) {
+                    grade[linha][coluna] = AGUA_NAVIO;
+                } else {
+                    grade[linha][coluna] = AGUA;
+                }
+                return 0;
+            } else if (gradeOponente[linha][coluna].equals(NAVIO) || gradeOponente[linha][coluna].equals(CERTEIRO_NAVIO)) {
+                if (grade[linha][coluna].equals(NAVIO)) {
+                    grade[linha][coluna] = CERTEIRO_NAVIO;
+                } else {
+                    grade[linha][coluna] = CERTEIRO;
+                }
+                return 1;
             }
-        } else if (grade[linha][coluna].equals(NAVIO) || grade[linha][coluna].equals(AGUA_NAVIO) || grade[linha][coluna].equals(CERTEIRO_NAVIO)) {
-            grade[linha][coluna] = CERTEIRO;
-            if (gradeOponente[linha][coluna].equals(NAVIO)) {
-                gradeOponente[linha][coluna] = CERTEIRO_NAVIO;
-            }
-            return 1;
-        } else if (!grade[linha][coluna].equals(VAZIO)) {
-            System.out.println("Posição já preenchida.");
-            return -1;
         }
-        return 0;
+        return -1;
     }
 
     public void setGrade(int linha, int coluna, String caractere) {

@@ -9,12 +9,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Partida {
-    public Jogador pessoa;
-    public Jogador computador;
+    public Pessoa pessoa = new Pessoa();
+    public Computador computador = new Computador();
 
     public Partida() {
-        this.pessoa = new Pessoa();
-        this.computador = new Computador();
+//        this.pessoa = new Pessoa();
+//        this.computador = new Computador();
         iniciaJogo();
     }
 
@@ -43,24 +43,25 @@ public class Partida {
         do {
             if (selecionaJogador == true) {
                 computador.fazJogada(pessoa);
-                pessoa.imprimeTabuleiro(); // APAGAR ESSA LINHA
+                computador.imprimeTabuleiro(); // APAGAR ESSA LINHA
                 selecionaJogador = false;
             } else {
                 pessoa.fazJogada(computador);
-                computador.imprimeTabuleiro();
+                pessoa.imprimeTabuleiro();
                 selecionaJogador = true;
             }
-//            contadorPartidas++;
-        } while (pessoa.getQuantidadeAcertos() < 2 && computador.getQuantidadeAcertos() < 2);
+        } while (pessoa.getQuantidadeAcertos() < 10 && computador.getQuantidadeAcertos() < 10);
         exibeVencedor();
     }
 
     public void exibeVencedor() {
-        if (pessoa.getQuantidadeAcertos() == 2) {
+        if (pessoa.getQuantidadeAcertos() == 10) {
             System.out.println("Jogo acabou! " + pessoa.getNome() + " venceu!");
         } else {
             System.out.println("Jogo acabou! Brainiac venceu!");
         }
+        System.out.println("TABULEIRO COMPUTADOR APÓS PARTIDA");
+        computador.imprimeTabuleiro();
         System.exit(0);
     }
 

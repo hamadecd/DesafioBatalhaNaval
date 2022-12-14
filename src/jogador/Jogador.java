@@ -9,10 +9,10 @@ import static partida.Partida.getNumero;
 public class Jogador {
     private String nome;
     private int quantidadeAcertos;
-    protected Tabuleiro tabuleiro;
+    public Tabuleiro tabuleiro = new Tabuleiro();
 
     public Jogador() {
-        tabuleiro = new Tabuleiro();
+//        tabuleiro = new Tabuleiro();
     }
 
     protected String[][] getGradeJogador() {

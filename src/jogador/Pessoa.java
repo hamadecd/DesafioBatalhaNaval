@@ -12,13 +12,13 @@ public class Pessoa extends Jogador {
     }
 
     public void fazJogada(Jogador computador) {
-//        String grade[][] = this.getJogador().tabuleiro.getGrade();
         int linha = getNumero("Informe a posição da linha: ");
         int coluna = getNumero("Informe a posição da coluna: ");
-        int ponto = computador.tabuleiro.gravaTabuleiro(linha, coluna, getGradeJogador());
+        int ponto = tabuleiro.gravaTabuleiro(linha, coluna, computador.getGradeJogador());
         if (ponto > 0) {
             setQuantidadeAcertos(getQuantidadeAcertos()+1);
         } else if (ponto == -1) {
+            System.out.println("Posição já preenchida.");
             fazJogada(computador);
         }
     }
