@@ -2,6 +2,7 @@ package jogador;
 
 import tabuleiro.Tabuleiro;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import static partida.Partida.getNumero;
@@ -12,14 +13,21 @@ public class Jogador {
     public Tabuleiro tabuleiro = new Tabuleiro();
 
     public Jogador() {
-//        tabuleiro = new Tabuleiro();
     }
 
-    protected String[][] getGradeJogador() {
-        return tabuleiro.getGrade();
-    }
-
-    public void posicionaPecas() {}
+    protected void posicionaPecasAutomaticamente() {
+        int contador = 1;
+        Random random = new Random();
+        String[][] grade = tabuleiro.getGrade();
+        while (contador <= 10) {
+            int linha = random.nextInt(0, 10);
+            int coluna = random.nextInt(0, 10);
+            if (grade[linha][coluna].equals("   ")) {
+                tabuleiro.setGrade(linha, coluna, " N ");
+                contador++;
+            }
+        }
+    };
 
     public void fazJogada(Jogador jogador) {}
 

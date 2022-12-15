@@ -49,14 +49,14 @@ public class Tabuleiro {
     public int gravaTabuleiro(int linha, int coluna, String[][] gradeOponente) {
 
         if (grade[linha][coluna].equals(NAVIO) || grade[linha][coluna].equals(VAZIO)) {
-            if (gradeOponente[linha][coluna].equals(VAZIO) || gradeOponente[linha][coluna].equals(CERTEIRO)) {
+            if (gradeOponente[linha][coluna].equals(VAZIO) || gradeOponente[linha][coluna].equals(CERTEIRO) || gradeOponente[linha][coluna].equals(AGUA)) {
                 if (grade[linha][coluna].equals(NAVIO)) {
                     grade[linha][coluna] = AGUA_NAVIO;
                 } else {
                     grade[linha][coluna] = AGUA;
                 }
                 return 0;
-            } else if (gradeOponente[linha][coluna].equals(NAVIO) || gradeOponente[linha][coluna].equals(CERTEIRO_NAVIO)) {
+            } else if (gradeOponente[linha][coluna].equals(NAVIO) || gradeOponente[linha][coluna].equals(CERTEIRO_NAVIO) || gradeOponente[linha][coluna].equals(AGUA_NAVIO)) {
                 if (grade[linha][coluna].equals(NAVIO)) {
                     grade[linha][coluna] = CERTEIRO_NAVIO;
                 } else {

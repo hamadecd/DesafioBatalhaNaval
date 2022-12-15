@@ -1,6 +1,7 @@
 package jogador;
 
 import java.util.Random;
+import java.util.Scanner;
 
 import static partida.Partida.getNumero;
 
@@ -8,13 +9,23 @@ public class Pessoa extends Jogador {
 
     public Pessoa() {
         setNome();
-        posicionaPecas();
+        Scanner scanner = new Scanner(System.in);
+        String frase = (getNome() + ", deseja escolher onde posicionar as peças, ou fazer de maneira aleatória pelo computador?\n" +
+                "0 - ESCOLHER\n" +
+                "1 - ALEATÓRIA");
+        int escolha = getNumero(frase);
+        if (escolha == 0) {
+            posicionaPecas();
+        } else if (escolha == 1) {
+            posicionaPecasAutomaticamente();
+        }
+        imprimeTabuleiro();
     }
 
     public void fazJogada(Jogador computador) {
         int linha = getNumero("Informe a posição da linha: ");
         int coluna = getNumero("Informe a posição da coluna: ");
-        int ponto = tabuleiro.gravaTabuleiro(linha, coluna, computador.getGradeJogador());
+        int ponto = tabuleiro.gravaTabuleiro(linha, coluna, computador.tabuleiro.getGrade());
         if (ponto > 0) {
             setQuantidadeAcertos(getQuantidadeAcertos()+1);
         } else if (ponto == -1) {
