@@ -10,7 +10,7 @@ public class Computador extends Jogador {
 
     public void fazJogada(Jogador pessoa) {
         Random random = new Random();
-        int linha = random.nextInt(0, 1);
+        int linha = random.nextInt(0, 10);
         int coluna = random.nextInt(0, 10);
         int ponto = tabuleiro.gravaTabuleiro(linha, coluna, pessoa.tabuleiro.getGrade());
         if (ponto > 0) {
@@ -19,19 +19,5 @@ public class Computador extends Jogador {
             fazJogada(pessoa);
         }
     }
-
-//    public void posicionaPecas() {
-//        int contador = 1;
-//        Random random = new Random();
-//        String[][] grade = tabuleiro.getGrade();
-//        while (contador <= 10) {
-//            int linha = random.nextInt(0, 10);
-//            int coluna = random.nextInt(0, 10);
-//            if (grade[linha][coluna].equals("   ")) {
-//                tabuleiro.setGrade(linha, coluna, " N ");
-//                contador++;
-//            }
-//        }
-//    }
 
 }

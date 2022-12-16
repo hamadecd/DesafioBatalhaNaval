@@ -68,8 +68,8 @@ public class Tabuleiro {
         return -1;
     }
 
-    public void setGrade(int linha, int coluna, String caractere) {
-        this.grade[linha][coluna] = caractere;
+    public void setGrade(int linha, int coluna) {
+        this.grade[linha][coluna] = NAVIO;
     }
 
     public String[][] getGrade() {

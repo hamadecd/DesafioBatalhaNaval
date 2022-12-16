@@ -41,7 +41,7 @@ public class Pessoa extends Jogador {
             int linha = getNumero("Informe a posição da linha para posicionar o submarino: ");
             int coluna = getNumero("Informe a posição da coluna para posicionar o submarino: ");
             if (grade[linha][coluna].equals("   ")) {
-                tabuleiro.setGrade(linha, coluna, " N ");
+                tabuleiro.setGrade(linha, coluna);
                 tabuleiro.imprimeTabuleiro();
                 contador++;
             } else {

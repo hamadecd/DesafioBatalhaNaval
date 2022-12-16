@@ -23,11 +23,11 @@ public class Jogador {
             int linha = random.nextInt(0, 10);
             int coluna = random.nextInt(0, 10);
             if (grade[linha][coluna].equals("   ")) {
-                tabuleiro.setGrade(linha, coluna, " N ");
+                tabuleiro.setGrade(linha, coluna);
                 contador++;
             }
         }
-    };
+    }
 
     public void fazJogada(Jogador jogador) {}
 
