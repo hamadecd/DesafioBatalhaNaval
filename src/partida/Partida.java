@@ -9,12 +9,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Partida {
-    public Pessoa pessoa = new Pessoa();
-    public Computador computador = new Computador();
+
+    private static Pessoa pessoa;
+    private static Computador computador;
 
     public Partida() {
-//        this.pessoa = new Pessoa();
-//        this.computador = new Computador();
         iniciaJogo();
     }
 
@@ -38,23 +37,33 @@ public class Partida {
         }
     }
 
-    public void iniciaJogo() {
+    private static void iniciaJogadores() {
+        pessoa = new Pessoa();
+        computador = new Computador();
+    }
+
+    public static void iniciaJogo() {
+        iniciaJogadores();
+        int quantidadeJogadas = 1;
         boolean selecionaJogador = true;
         do {
             if (selecionaJogador == true) {
                 computador.fazJogada(pessoa);
-                computador.tabuleiro.imprimeTabuleiro(); // APAGAR ESSA LINHA
                 selecionaJogador = false;
             } else {
                 pessoa.fazJogada(computador);
                 pessoa.tabuleiro.imprimeTabuleiro();
+                System.out.println("Resultado até agora: \n"+pessoa.getNome()+" acertou "+pessoa.getQuantidadeAcertos()+
+                        "\nBrainiac acertou "+computador.getQuantidadeAcertos()+
+                        "\nTotal de jogadas até o momento: " + quantidadeJogadas+"\n");
                 selecionaJogador = true;
             }
+            quantidadeJogadas++;
         } while (pessoa.getQuantidadeAcertos() < 10 && computador.getQuantidadeAcertos() < 10);
         exibeVencedor();
     }
 
-    public void exibeVencedor() {
+    private static void exibeVencedor() {
         if (pessoa.getQuantidadeAcertos() == 10) {
             System.out.println("Jogo acabou! " + pessoa.getNome() + " venceu!");
         } else {
