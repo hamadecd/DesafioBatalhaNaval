@@ -44,12 +44,10 @@ public class Partida {
             if (selecionaJogador == true) {
                 computador.fazJogada(pessoa);
                 computador.tabuleiro.imprimeTabuleiro(); // APAGAR ESSA LINHA
-//                computador.imprimeTabuleiro(); // APAGAR ESSA LINHA
                 selecionaJogador = false;
             } else {
                 pessoa.fazJogada(computador);
                 pessoa.tabuleiro.imprimeTabuleiro();
-//                pessoa.imprimeTabuleiro();
                 selecionaJogador = true;
             }
         } while (pessoa.getQuantidadeAcertos() < 10 && computador.getQuantidadeAcertos() < 10);
@@ -62,6 +60,8 @@ public class Partida {
         } else {
             System.out.println("Jogo acabou! Brainiac venceu!");
         }
+        System.out.println("TABULEIRO DO JOGADOR " + pessoa.getNome() + " APÓS PARTIDA");
+        pessoa.tabuleiro.imprimeTabuleiro();
         System.out.println("TABULEIRO COMPUTADOR APÓS PARTIDA");
         computador.tabuleiro.imprimeTabuleiro();
         System.exit(0);

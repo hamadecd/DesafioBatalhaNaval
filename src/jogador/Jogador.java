@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import static partida.Partida.getNumero;
 
-public class Jogador {
+public abstract class Jogador {
     private String nome;
     private int quantidadeAcertos;
     public Tabuleiro tabuleiro = new Tabuleiro();
@@ -29,7 +29,7 @@ public class Jogador {
         }
     }
 
-    public void fazJogada(Jogador jogador) {}
+    public abstract void fazJogada(Jogador jogador);
 
     protected void setNome() {
         Scanner scanner = new Scanner(System.in);

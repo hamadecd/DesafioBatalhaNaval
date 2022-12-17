@@ -9,6 +9,10 @@ public class Pessoa extends Jogador {
 
     public Pessoa() {
         setNome();
+        comoPosicionarPecas();
+    }
+
+    private void comoPosicionarPecas() {
         Scanner scanner = new Scanner(System.in);
         String frase = (getNome() + ", deseja escolher onde posicionar as peças, ou fazer de maneira aleatória pelo computador?\n" +
                 "0 - ESCOLHER\n" +
